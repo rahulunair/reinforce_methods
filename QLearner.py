@@ -18,8 +18,6 @@ class QLearner(object):
         self.n_obs = env.observation_space.n
         self.n_actions = env.action_space.n
         self.q_mat = np.random.rand(self.n_obs, self.n_actions)
-        self.nonrandom = 0
-        self.randomm = 0
 
     def eps_greedy(self, state, iteration):
         """returns action that gives maximum value or a random action.
@@ -59,7 +57,6 @@ def main():
                 q_learner.q_update(state, action, reward, n_state)
                 if reward > 0:
                     env.render()
-                    # print("Yay!, Done in {} iterations ".format(iterations))
                 break
             reward = 0
             q_learner.q_update(state, action, reward, n_state)
